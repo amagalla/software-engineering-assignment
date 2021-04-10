@@ -9,6 +9,9 @@ const PORT = process.env.PORT || 5000;
 // require routes
 const registrationRouter = require("./server/routes/registrationRouter");
 
+// require error handling
+const { errorhandler } = require("./server/error-handling/error-handler");
+
 // parse body
 app.use(cors());
 app.use(express.json());
@@ -21,23 +24,8 @@ app.use(express.json());
 // define routes
 app.use("/users", registrationRouter);
 
-// error handling
-app.use("*", (req, res) => {
-  console.log("We are in a bad route");
-  res.status(404);
-});
-
-// global error handling
-app.use((err, req, res, next) => {
-  const defaultErr = {
-    log: "Express error handler caught unknown middleware error",
-    status: 500,
-    message: { err: "An error occurred" },
-  };
-  const errorObj = Object.assign({}, defaultErr, err);
-  console.log(errorObj.log);
-  return res.status(errorObj.status).json(errorObj.message);
-});
+// error handler
+app.use(errorhandler);
 
 // port
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

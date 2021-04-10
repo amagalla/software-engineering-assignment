@@ -26,7 +26,7 @@ module.exports = {
 
           console.log("Need to fill input");
           // tests if any value is invalid input, throw error
-          throw new Error("Invalid input");
+          throw new Error("Incomplete input");
           // checks if key is zip
         } else if (key === "zip") {
           //   checks if value of zip is not either 5 or 9
@@ -34,7 +34,7 @@ module.exports = {
             //   invalid amount of numbers
             console.log("Invalid amount of numbers for zipcode");
             // throw error
-            throw Error({ err: "Invalide amoung of numbers of zipcode" });
+            throw new Error("Only 5 or 9 numbers for zipcode allowed");
           }
           // checks if key is country
         } else if (key === "country") {
@@ -42,7 +42,7 @@ module.exports = {
           if (req.body[key] !== "US" && req.body[key] !== "USA") {
             console.log("Country has to be US or USA");
             // throw error
-            throw Error();
+            throw new Error("Country has to be US or USA");
           }
         }
       }

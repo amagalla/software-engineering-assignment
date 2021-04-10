@@ -1,9 +1,9 @@
-const errorhandler = (err, req, res, next) => {
-  console.log("Something went wrong ", err);
+module.exports = {
+  errorhandler: (err, req, res, next) => {
+    console.log("Something went wrong ", err);
 
-  res.status(400).send({
-    message: "Something went wrong",
-  });
+    res.status(400).send({
+      message: err.message,
+    });
+  },
 };
-
-module.exports = errorhandler;
