@@ -1,9 +1,9 @@
-import React from "react";
+import "../styles/homepage.scss";
 
 const PageNotFound = () => {
   return (
-    <div>
-      <p>404 - Page Not Found</p>
+    <div className='homepage-PageNotFound-container'>
+      <h1>404 - Page Not Found</h1>
     </div>
   );
 };

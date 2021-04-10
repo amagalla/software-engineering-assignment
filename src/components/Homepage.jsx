@@ -1,9 +1,9 @@
-import React from "react";
+import "../styles/homepage.scss";
 
 const Homepage = () => {
   return (
-    <div>
-      <p>Homepage</p>
+    <div className='homepage-PageNotFound-container'>
+      <h1>Homepage</h1>
     </div>
   );
 };
