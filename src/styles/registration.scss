@@ -1,0 +1,32 @@
+.registration-main-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(143, 143, 143);
+}
+
+.registration-container {
+  background-color: rgb(231, 231, 231);
+  border-radius: 1em;
+  padding: 4rem;
+  box-sizing: border-box;
+}
+
+.registration-container h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  gap: 4rem;
+}
+
+form p {
+  margin-top: 1rem;
+}
+
+form input[type="submit"] {
+  display: block;
+  margin-top: 2.5rem;
+}
