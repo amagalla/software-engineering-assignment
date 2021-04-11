@@ -12,10 +12,3 @@
         date DATE not null default CURRENT_DATE
     )
 */
-
-/*
-
-INSERT INTO registration (firstname, lastname, address1, address2, city, state, zip, country)
-VALUES ('Anthony', 'Magallanes', '38888 TEST ADDRESS', '38888 TEST2 ADRESS2', 'San Francisco', 'CA', '987657856', 'US')
-
-*/

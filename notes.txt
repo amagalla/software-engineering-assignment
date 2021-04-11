@@ -1,3 +1,0 @@
-Zip code only 5 or 9 digits
-
-Country is US only

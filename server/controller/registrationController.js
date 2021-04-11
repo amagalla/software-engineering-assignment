@@ -4,14 +4,14 @@ const db = require("../database/postgresdb");
 module.exports = {
   getAllRegisteredUsers: async (req, res, next) => {
     try {
-      // create query to get all users
+      // create query to get all users by DESC order by date
       const getUsers = "SELECT * FROM registration ORDER BY date DESC";
-      // await request to database
+      // await request to database and assign values to users
       const users = await db.query(getUsers);
       // server data rows to local.users to pass onto next middleware
       res.locals.users = users.rows;
       return next();
-      // catch any erros and return errors
+      // catch any errors and return errors
     } catch (err) {
       return next(err);
     }
@@ -46,6 +46,7 @@ module.exports = {
         country,
       ]);
       return next();
+      // catch errors
     } catch (err) {
       return next(err);
     }

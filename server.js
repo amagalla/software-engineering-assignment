@@ -12,30 +12,36 @@ const registrationRouter = require("./server/routes/registrationRouter");
 // require error handling
 const { errorhandler } = require("./server/error-handling/error-handler");
 
-// parse body
-app.use(cors());
+// parses body to recognize request object as json
 app.use(express.json());
+// cross share to allow http request from the frontend
+app.use(cors());
 
-// define routes
+// declare routes
 app.use("/users", registrationRouter);
 
-// define url routes
+/* DEFINE URL ROUTES */
 
 // this is the main (first page route)
 app.use(express.static(path.join(__dirname, "dist")));
-
+// registration route
 app.get("/registration", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
+// confirmation route
 app.get("/confirmation", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
+// confirmation adminreport
 app.get("/adminreport", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
+// any route not defined, falls back to page not found page
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
+
+/* END OF DEFINING URL ROUTES */
 
 // error handler
 app.use(errorhandler);

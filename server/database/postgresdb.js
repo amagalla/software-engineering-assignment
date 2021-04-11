@@ -1,10 +1,12 @@
 const { Pool } = require("pg");
 
+// database uri
 const myURI =
   "postgres://gagymfof:O0Eqn0SVUdPSJvdZqdF8945C0S_l0VVY@lallah.db.elephantsql.com:5432/gagymfof";
 
 const URI = process.env.PG_URI || myURI;
 
+// create pool
 const pool = new Pool({
   connectionString: myURI,
 });
