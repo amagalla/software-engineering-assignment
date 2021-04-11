@@ -6,7 +6,7 @@ const AdminReport = () => {
   const [registers, setRegisters] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users/registration")
+    fetch("users/registration")
       .then((res) => res.json())
       .then((data) => setRegisters(data))
       .catch((err) => {

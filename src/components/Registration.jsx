@@ -13,6 +13,7 @@ const Registration = () => {
     zip: "",
     country: "",
   });
+  const [invalid, setInvalid] = useState("");
 
   let history = useHistory();
 
@@ -35,18 +36,21 @@ const Registration = () => {
         firstname: register.firstname,
         lastname: register.lastname,
         address1: register.address,
-        addresss2: register.address2,
+        address2: register.address2,
         city: register.city,
         state: register.state,
         zip: register.zip,
         country: register.country,
       }),
     })
-      .then((res) => {
-        res.json();
-        history.push("/confirmation");
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.hasOwnProperty("message")) {
+          setInvalid(data.message);
+        } else {
+          history.push("/confirmation");
+        }
       })
-      .then((data) => console.log("good data", data))
       .catch((err) => {
         console.log("im in the catch err");
         console.log(err);
@@ -131,6 +135,7 @@ const Registration = () => {
             <input type='submit' />
           </div>
         </form>
+        <p className='invalid'>{invalid}</p>
       </div>
     </div>
   );

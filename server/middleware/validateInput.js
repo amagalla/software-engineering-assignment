@@ -17,7 +17,7 @@ module.exports = {
       for (let key in req.body) {
         //  checks if there are no values after triming white spaces
         if (req.body[key].trim().length < 1) {
-          // tests if key is address 2 then set value to empy string then continue over it
+          // tests if key is address 2 then set value to empty string then continue over it
           if (key === "address2") {
             // reset to empy string
             req.body[key] = "";
