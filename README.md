@@ -5,3 +5,9 @@ This is my software engineer assignment from Merkle. This application let's user
 npm install <br/>
 npm run dev to run both the frotend and server <br/>
 location will be on localhost:8080
+<br />
+To connect to Heroku, server.js needs to be in the root folder. Usually, I would but server.js inside of the server folder.
+<br />
+npm run build to create dist folder for node server to read the frontend
+<br />
+npm start to start server at localhost:5000
