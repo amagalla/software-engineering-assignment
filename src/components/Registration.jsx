@@ -1,6 +1,6 @@
 const Registration = () => {
   return (
-    <div>
+    <div className='registration-container'>
       <p>Registration</p>
     </div>
   );

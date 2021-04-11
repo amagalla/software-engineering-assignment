@@ -1,4 +1,4 @@
-import "../styles/homepage.scss";
+import "../styles/home-notfound-confirm.scss";
 
 const Confirmation = () => {
   return (
