@@ -3,6 +3,7 @@ import Registration from "./Registration";
 import AdminReport from "./AdminReport";
 import Homepage from "./Homepage";
 import PageNotFound from "./PageNotFound";
+import Confirmation from "./Confirmation";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
@@ -18,6 +19,9 @@ const App = () => {
           </Route>
           <Route path='/adminreport'>
             <AdminReport />
+          </Route>
+          <Route path='/confirmation'>
+            <Confirmation />
           </Route>
           <Route>
             <PageNotFound />

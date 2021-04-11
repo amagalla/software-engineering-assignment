@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../styles/registration.scss";
+import { useHistory } from "react-router-dom";
 
 const Registration = () => {
   const [register, setRegister] = useState({
@@ -9,8 +10,11 @@ const Registration = () => {
     address2: "",
     city: "",
     state: "",
+    zip: "",
     country: "",
   });
+
+  let history = useHistory();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,17 +24,57 @@ const Registration = () => {
     }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch("/users/registration", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstname: register.firstname,
+        lastname: register.lastname,
+        address1: register.address,
+        addresss2: register.address2,
+        city: register.city,
+        state: register.state,
+        zip: register.zip,
+        country: register.country,
+      }),
+    })
+      .then((res) => {
+        res.json();
+        history.push("/confirmation");
+      })
+      .then((data) => console.log("good data", data))
+      .catch((err) => {
+        console.log("im in the catch err");
+        console.log(err);
+      });
+
+    setRegister({
+      firstname: "",
+      lastname: "",
+      address: "",
+      address2: "",
+      city: "",
+      state: "",
+      zip: "",
+      country: "",
+    });
+  };
+
   return (
     <div className='registration-main-container'>
       <div className='registration-container'>
         <h1>Registration</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
             <p>First Name</p>
             <input
               type='text'
               name='firstname'
-              value={register.nam}
+              value={register.firstname}
               onChange={handleChange}
             />
             <p>Address</p>
@@ -47,11 +91,11 @@ const Registration = () => {
               value={register.city}
               onChange={handleChange}
             />
-            <p>Country</p>
+            <p>Zip</p>
             <input
               type='text'
-              name='country'
-              value={register.counter}
+              name='zip'
+              value={register.zip}
               onChange={handleChange}
             />
           </div>
@@ -75,6 +119,13 @@ const Registration = () => {
               type='text'
               name='state'
               value={register.state}
+              onChange={handleChange}
+            />
+            <p>Country (Only US)</p>
+            <input
+              type='text'
+              name='country'
+              value={register.country}
               onChange={handleChange}
             />
             <input type='submit' />

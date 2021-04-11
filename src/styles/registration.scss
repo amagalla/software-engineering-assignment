@@ -19,6 +19,7 @@
 
 form {
   display: flex;
+  flex-wrap: wrap;
   gap: 4rem;
 }
 
@@ -29,4 +30,5 @@ form p {
 form input[type="submit"] {
   display: block;
   margin-top: 2.5rem;
+  padding: 5px;
 }
