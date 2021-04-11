@@ -12,7 +12,7 @@
     "clean": "rm -rf dist",
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run start\" \"npm run server\"",
-    "deploy": "git add . && git commit -m Heroku && git push heroku master"
+    "deploy": "git add . && git commit -m Heroku && git push heroku main"
   },
   "keywords": [],
   "author": "",
