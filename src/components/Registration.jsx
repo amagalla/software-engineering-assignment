@@ -14,8 +14,13 @@ const Registration = () => {
     country: "",
   });
   const [invalid, setInvalid] = useState("");
+  const [required, setrequired] = useState(false);
 
   let history = useHistory();
+
+  const handleClick = () => {
+    setrequired((prev) => !prev);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,6 +29,8 @@ const Registration = () => {
       [name]: value,
     }));
   };
+
+  console.log(required);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,6 +48,7 @@ const Registration = () => {
         state: register.state,
         zip: register.zip,
         country: register.country,
+        required: required,
       }),
     })
       .then((res) => res.json())
@@ -133,6 +141,7 @@ const Registration = () => {
               onChange={handleChange}
             />
             <input type='submit' />
+            <input type='checkbox' onClick={() => handleClick()} />
           </div>
         </form>
         <p className='invalid'>{invalid}</p>

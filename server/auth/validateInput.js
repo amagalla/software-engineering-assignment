@@ -1,12 +1,15 @@
 module.exports = {
   validInput: (req, res, next) => {
+    const valArray = Object.values(req.body);
+    const required = valArray[valArray.length - 1];
     try {
       // iterate through body object
       for (let key in req.body) {
         //  checks if there are no values after triming white spaces
+        if (key === "required") continue;
         if (req.body[key].trim().length < 1) {
           // tests if key is address 2 then set value to empty string then continue over it
-          if (key === "address2") {
+          if (key === "address2" && required === "false") {
             // reset to empy string
             req.body[key] = "";
             continue;
@@ -59,6 +62,7 @@ module.exports = {
           req.body[key] = "US";
         }
         // trim white spaces around input and assign it as value the key's value
+        console.log("I AM BEFORE LAST TRIM");
         req.body[key] = req.body[key].trim();
       }
       // return next if values are valid
